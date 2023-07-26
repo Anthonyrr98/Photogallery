@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的照片合辑</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="shortcut icon" href="index.png" type="image/vnd.microsoft.icon" />
+<link rel="icon" href="index.png" type="image/vnd.microsoft.icon" />
+<link rel="stylesheet" href="css/reset.css" type="text/css">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+
+<body class="drawer drawer--top">
+<header role="banner">
+	
+	<nav class="drawer-nav" role="navigation">
+		<ul class="drawer-menu">
+		</ul>
+	</nav>
+</header>
+<div class="header">
+	
+	<div class="page-tit">
+		<h2>每到一处，皆有感悟</h2>
+	</div>
+</div>
+<div class="container">
+	<div id="contents">
+		<div class="grid-items">
+			<ul>
+				<li><a href="works/city.html" title="城市"> <img src="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E5%9F%8E%E5%B8%82/20230725.jpg" alt="STREETS ARE MINE"></a>
+					<h4>城市</h4>
+				</li>
+				<li><a href="momentum.html" title="博物馆"> <img src="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E5%8D%9A%E7%89%A9%E9%A6%86/20230407.jpeg" alt="MOMENTUM"></a>
+					<h4>博物馆</h4>
+				</li>
+				<li><a href="everest.html" title="身边"> <img src="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E8%BA%AB%E8%BE%B9/IMG_0636.jpeg" alt="EVEREST"></a>
+					<h4>身边</h4>
+				</li>
+				<li><a href="everest.html" title="有些吃的"> <img src="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E6%9C%89%E4%BA%9B%E5%90%83%E7%9A%84/202307025.jpeg" alt="EVEREST"></a>
+					<h4>有些吃的</h4>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<footer> <a href="index.html#" class="pagetop"></a>
+	<div class="copyright">
+		<p>Copyright <span>&copy;</span>Anthonyrr</p>
+	</div>
+</footer>
+
+<!-- jQueryの読み込み--> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+
+<!-- jQuery Easing Pluginの読み込み--> 
+<script src="js/jquery.easing.1.3.js"></script>
+<!-- jquery.vgrid.min.jsの読み込み --> 
+<script src="js/jquery.vgrid.min.js"></script> 
+
+<!-- iScroll --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.1.3/iscroll.min.js"></script> 
+<!-- drawer.js --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.1.0/js/drawer.min.js"></script> 
+<!-- --> 
+
+<!-- drawerスクリプト --> 
+<script type="text/javascript">
+ $(document).ready(function () {
+    $('.drawer').drawer();
+});
+</script> 
+
+<!-- grid スクリプト --> 
+<script type="text/javascript">   
+$(function(){  
+    $(".contents").vgrid({  
+        easeing: "easeOutQuint",  
+        useLoadImageEvent: true,  
+        time: 1000,  
+        delay: 1000,  
+        fadeIn: { //フェードインの指定  
+            time: 30,  
+            delay: 30,  
+        }  
+    });  
+});  
+	
+$(function(){
+	$('.grid-items ul').vgrid({
+		useLoadImageEvent:true,
+		fadeIn: {
+			time: 2000,  
+			delay: 200
+		}
+	});
+	
+	$(".sort a").click(function(){
+		$('.grid-items ul').vgsort(function(a, b){
+			var _a = $(a).find('p').text();
+			var _b = $(b).find('p').text();
+			return (_a > _b) ? 1 : -1 ;
+		});
+		return false;
+	});
+
+});
+</script> 
+
+
+<!-- 上へもどる --> 
+<script type="text/javascript">
+   $(function(){
+
+      var topBtn = $(".pagetop");
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 100) {
+                topBtn.fadeIn();
+            } else {
+                topBtn.fadeOut();
+            }
+        });
+
+      topBtn.on("click", function () {
+        $("body,html").animate({
+          "scrollTop": 0
+        }, 1000, 'easeOutExpo');
+        return false;
+      });
+    });
+</script>
+	
+</body>
+</html>

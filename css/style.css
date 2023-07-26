@@ -1,0 +1,803 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css?family=Roboto:700,300,100');
+h1, h2, h3, h4, h5, h6 {
+	font-size: 100%;
+	font-weight: normal;
+	font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", "Hiragino Kaku Gothic ProN", MS Gothic, futura, myriad pro, arial, movement, helvetica, sans-serif;
+	color: #000;
+	font-size: 1.3rem;
+	line-height: 160%;
+}
+img {
+	border: 0;
+	vertical-align: top;
+	max-width: 100%;
+	height: auto;
+}
+input[type="submit"], button, label, select {
+	cursor: pointer;
+}
+body {
+	background: #FFF;
+	height: 100%;
+	font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", "Hiragino Kaku Gothic ProN", MS Gothic, futura, myriad pro, arial, movement, helvetica, sans-serif;
+	color: #000;
+	font-size: 1.3rem;
+	line-height: 160%;
+	word-wrap: break-word;
+	webkit-text-size-adjust: none;
+}
+@media (min-width: 760px) {
+	.sp {
+		display: none;
+	}
+}
+@media (max-width: 759px) {
+	.pc {
+		display: none;
+	}
+}
+/* ===========================================================	
+
+ 　　drawer
+	
+=========================================================== */
+.drawer-open {
+	overflow: hidden !important;
+}
+/* ナビ　*/
+.drawer-nav {
+	position: fixed;
+	z-index: 101;
+	top: 0;
+	overflow: hidden;
+	height: 100%;
+	color: #222;
+	background-color: #fff; /* ナビ背景　*/
+	display: block;
+	filter: alpha(opacity=92);
+	-moz-opacity: 0.92;
+	opacity: 0.92;
+}
+.drawer-menu {
+	margin: 65px 0px 0 30px; /* NAVI MARGIN*/
+	padding: 0;
+	color: #222;
+	list-style: none;
+}
+@media only screen and (min-width: 600px) {
+	.drawer-menu {
+		margin: 45px 0px 0px 130px; /* NAVI MARGIN PC */
+	}
+}
+@media only screen and (min-width: 480px) and (max-width: 599px) {
+	.drawer-menu {
+		margin: 45px 0px 0px 100px; /* NAVI MARGIN PC */
+	}
+}
+/* ナビ テキスト　*/
+.drawer-menu-item {
+	font-size: 2.4rem;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	font-style: italic;
+	letter-spacing: 0.1rem;
+	line-height: 2.85rem;
+	display: block;
+	color: #222;
+	text-decoration: none;
+}
+.drawer-menu-item-s { /*一緒にした*/
+	font-size: 2.4rem;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	font-style: italic;
+	letter-spacing: 0.1rem;
+	line-height: 2.85rem;
+	display: block;
+	color: #222;
+	text-decoration: none;
+}
+/* ナビ テキストPC　*/
+@media only screen and (min-width: 600px) {
+	.drawer-menu-item {
+		font-size: 2.7rem;
+		letter-spacing: 0.05rem;
+		line-height: 3.7rem;
+		text-align: left;
+	}
+	.drawer-menu-item-s {
+		font-size: 2.7rem;
+		letter-spacing: 0.05rem;
+		line-height: 3.7rem;
+		text-align: left;
+	}
+}
+@media only screen and (min-width: 480px) and (max-width: 599px) {
+	.drawer-menu-item {
+		font-size: 2.4rem;
+		letter-spacing: 0.1rem;
+		line-height: 3.5rem;
+		text-align: left;
+	}
+	.drawer-menu-item-s {
+		font-size: 2.4rem;
+	}
+}
+/* ナビ テキスト 日本語*/
+.ja {
+	display: none;
+	font-size: 0.9rem;
+	font-family: "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+	letter-spacing: 0.1;
+	margin: 0;
+	padding: 0;
+}
+.drawer-menu-item:hover {
+	color: #CCC;
+	background-color: transparent;
+}
+.drawer-menu-item-s:hover {
+	color: #CCC;
+	background-color: transparent;
+}
+/*! overlay */
+.drawer-overlay {
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	display: none;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, .2);
+}
+.drawer-open .drawer-overlay {
+	display: block;
+}
+/*!------------------------------------*\
+    Top
+\*!------------------------------------*/
+.drawer--top .drawer-nav {
+	top: -100%;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	max-height: 100%;
+	-webkit-transition: top .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+	transition: top .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+}
+.drawer--top.drawer-open .drawer-nav {
+	top: 0;
+}
+.drawer--top .drawer-hamburger, .drawer--top.drawer-open .drawer-hamburger {
+	left: 1%;
+}
+/*!------------------------------------*\
+    Hamburger
+\*!------------------------------------*/
+.drawer-hamburger {
+	position: fixed;
+	z-index: 104;
+	top: 0;
+	display: block;
+	box-sizing: content-box;
+	width: 2.5rem; /* Hamburger width */
+	padding: 0;
+	padding-top: 18px;
+	padding-right: .75rem;
+	padding-bottom: 30px;
+	padding-left: .75rem;
+	-webkit-transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+	transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+	-webkit-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+	border: 0;
+	outline: 0;
+	background-color: transparent;
+}
+.drawer-hamburger:hover {
+	cursor: pointer;
+	background-color: transparent;
+}
+.drawer-hamburger-icon {
+	position: relative;
+	display: block;
+	margin-top: 10px;
+}
+.drawer-hamburger-icon, .drawer-hamburger-icon:before, .drawer-hamburger-icon:after {
+	width: 100%; /* Hamburger 真ん中の線に対して*/
+	height: 2px; /* Hamburger 線幅 */
+	-webkit-transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+	transition: all .6s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+	background-color: #222;
+}
+.drawer-hamburger-icon:before, .drawer-hamburger-icon:after {
+	position: absolute;
+	top: -10px; /* Hamburger 真ん中の線に対して*/
+	left: 0;
+	content: ' ';
+}
+.drawer-hamburger-icon:after {
+	top: 10px; /* Hamburger 真ん中の線に対して*/
+}
+.drawer-open .drawer-hamburger-icon {
+	background-color: transparent;
+}
+.drawer-open .drawer-hamburger-icon:before, .drawer-open .drawer-hamburger-icon:after {
+	top: 0;
+}
+.drawer-open .drawer-hamburger-icon:before {
+	-webkit-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+.drawer-open .drawer-hamburger-icon:after {
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+}
+@media only screen and (max-width: 479px) {
+	.drawer-hamburger-icon {
+		width: 55%;
+	}
+	.drawer-hamburger-icon:before {
+		top: -9px;
+	}
+	.drawer-hamburger-icon:after {
+		top: 9px;
+	}
+}
+/*!------------------------------------*\
+    accessibility
+\*!------------------------------------*/
+/*!
+ * Only display content to screen readers
+ * See: http://a11yproject.com/posts/how-to-hide-content
+ */
+.sr-only {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+}
+/*!
+ * Use in conjunction with .sr-only to only display content when it's focused.
+ * Useful for "Skip to main content" links; see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+ * Credit: HTML5 Boilerplate
+ */
+.sr-only-focusable:active, .sr-only-focusable:focus {
+	position: static;
+	overflow: visible;
+	clip: auto;
+	width: auto;
+	height: auto;
+	margin: 0;
+}
+/*ドロワーここまで*/
+/* /* ===========================================================	
+
+	header
+	
+=========================================================== */
+.header {
+	position: relative;
+	text-align: right;
+	margin: 15px auto 40px;
+	height: auto !important;
+}
+.logo {
+	margin-bottom: 5px;
+}
+@media only screen and (min-width: 1120px) {
+	.header {
+		width: 1000px;
+	}
+}
+@media only screen and (min-width: 600px) and (max-width: 1119px) {
+	.header {
+		margin: 15px 60px 40px;
+	}
+}
+@media only screen and (max-width: 599px) {
+	.header {
+		margin: 15px 20px 25px;
+	}
+}
+@media only screen and (max-width: 479px) {
+	.logo {
+		width: 0;
+	}
+}
+/* ===========================================================	
+
+	page title
+	
+=========================================================== */
+/*
+.page-tit {
+	position: relative;
+	text-align: right;
+	margin: 8px 0 0 0;
+	font-size: 1.35rem; 
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	font-style: italic;
+	letter-spacing: 0.1rem;
+	padding:0;
+}
+*/
+.page-tit h2 {
+	display: flex;
+	justify-content: flex-end;
+	flex-direction: column;
+	margin: 1rem 0 0 0;
+	font-size: 1.6rem;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 100;
+	font-style: italic;
+	letter-spacing: 0.15rem;
+	padding: 0;
+}
+.ja-en {
+	font-size: 1.1rem;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: italic;
+	letter-spacing: 0.1rem;
+	height: 100%;
+	padding: 0.2rem 0.15rem 0;
+	line-height: 1.5rem;
+}
+.ja-en a {
+	font-size: 1.1rem;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	font-style: italic;
+	letter-spacing: 0.1rem;
+	padding: 0;
+	text-decoration: none;
+	color: #222;
+}
+.ja-en a:hover {
+	opacity: 0.5;
+}
+@media only screen and (min-width: 1100px) {
+	.page-tit {
+		margin: 5px 0px 0 0;
+	}
+}
+@media only screen and (max-width: 479px) {
+	.page-tit {
+		font-size: 1.45rem;
+		margin: 8px 0 0 0px;
+	}
+}
+/* ===========================================================	
+
+	contents
+	
+=========================================================== */
+.contents {
+	position: relative;
+	background: #fff;
+	margin: 0 auto 70px;
+	padding-bottom: 0px;
+}
+@media only screen and (min-width: 1120px) {
+	.contents {
+		width: 1000px;
+		min-height: 750px;
+	}
+}
+@media (max-width: 1119px) {
+	.contents {
+		margin: 0 70px 70px;
+		min-height: 680px;
+	}
+}
+@media (max-width: 939px) {
+	.contents {
+		min-height: 680px;
+	}
+}
+@media only screen and (max-width: 599px) {
+	.contents {
+		margin: 0 20px 70px;
+		min-height: 300px;
+	}
+}
+
+.contents {
+	zoom: 1;
+}
+
+/* ===========================================================	
+
+	copyright
+	
+=========================================================== */
+
+footer div.copyright p {
+	text-align: right;
+	height: auto !important;
+	margin: 3rem 2rem 1rem 0;
+	font-size: 0.8rem !important;
+	line-height: 1.3;
+	color: #555;
+}
+footer div.copyright p span {
+	font-size: 0.9rem;
+}
+@media only screen and (max-width: 1000px) {
+	footer div.copyright p {
+		margin: 5rem 0.8rem 1rem 0;
+	}
+}
+@media only screen and (max-width: 575px) {
+	#works footer div.copyright p {
+		position: absolute;
+		bottom:0 !important;
+		right: 0.2rem;
+	}
+}
+/* ===========================================================	
+
+	上にもどる　追加
+	
+=========================================================== */
+.pagetop {
+	display: none;
+	position: fixed;
+	bottom: 2.5rem;
+	right: 1.1rem;
+	background-color: #888;
+	border-radius: 50px;
+	opacity: 0.7;
+	width: 50px;
+	height: 50px;
+	z-index: 10;
+}
+.pagetop::before {
+	content: "";
+	position: absolute;
+	left: 16px;
+	top: 20px;
+	width: 17px;
+	height: 17px;
+	border-top: 2px solid #fff;
+	border-right: 2px solid #fff;
+	-webkit-transform: rotate(315deg);
+	transform: rotate(315deg);
+}
+/* ===========================================================	
+
+	hp link
+	
+=========================================================== */
+.hp a {
+	font-size: 0.85rem;
+	font-style: italic;
+	color: #222;
+	text-decoration: none;
+	padding-bottom: 3px;
+	border-bottom: 1px solid;
+}
+.hp a:hover {
+	opacity: 0.75;
+	filter: alpha(opacity=75); /* Ie用 */
+}
+/* ===========================================================
+
+	profile
+	
+=========================================================== */
+#profile h2 {
+	font-size: 1.4rem;
+	letter-spacing: 0.03em;
+	padding: 0 0 20px;
+}
+#profile h3 {
+	font-size: 1.5rem;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+	letter-spacing: 0.03em;
+	margin-bottom: 0px;
+	padding-top: 20px;
+	border-top: 1px solid #888;
+	clear: both;
+}
+#profile h3 a {
+	text-decoration: none;
+	color: #222;
+	font-weight: bold;
+}
+#profile h3 a:hover {
+	opacity: 0.5;
+}
+#profile .section {
+	font-size: 0.95rem;
+	line-height: 1.7;
+	margin: 40px 0;
+	padding: 0;
+	display: inline-block;
+	vertical-align: top;
+	clear: both;
+}
+#profile p {
+	line-height: 1.8rem;
+	font-size: 0.95rem;
+}
+#profile .exhibitions dl dd {
+	margin-left: 0.5rem;
+	text-indent: -0.5rem;
+}
+#profile .exhibitions.en-indent dd {
+	margin-left: 0.2rem;
+	text-indent: -0.2rem;
+}
+#profile .exhibitions dl dd a {
+	color: #666;
+	font-weight: 500;
+	text-decoration: none;
+	padding-bottom: 2px;
+}
+#profile .exhibitions dl dd a:hover {
+	opacity: 0.3;
+	text-decoration: none;
+}
+#profile .exhibitions dl dt {
+	float: left;
+}
+#profile .exhibitions dl dd {
+	padding: 0 0 0 3rem;
+}
+@media only screen and (max-width: 479px) {
+	#profile p {
+		font-size: 0.85rem;
+		line-height: 1.7;
+	}
+	#profile ul, dl {
+		margin-bottom: 8px;
+		line-height: 1.8;
+		font-size: 0.85rem;
+	}
+	#profile dd {
+		margin-bottom: 0.25rem;
+		line-height: 1.7;
+	}
+}
+
+/* ===========================================================	
+
+	WORKS カード
+	
+=========================================================== */
+
+/*作品タイトル*/
+.grid-items h4 { 
+	font-size: 0.95rem;
+}
+
+/*カード*/
+.grid-items {
+	margin-top: 0px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 70px;
+	padding:0;
+}
+
+.grid-items li {
+	background:#FFF;
+	box-shadow: #CCC 0px;
+}
+.grid-items li img{
+	max-width:100%;
+	padding:10px 0 0;
+}
+.grid-items li h4{
+	padding:5px 0 0;
+}
+
+@media only screen and (min-width: 1060px){
+	.grid-items {
+		width:940px;
+		height: auto;
+	}
+	.grid-items li {
+	margin: 10px 27px 17px;
+	}
+	.grid-items li img{
+	width: 416px;
+	height: 334px;
+	}
+}
+@media only screen and (min-width: 760px) and (max-width: 1059px) {
+	.grid-items {
+		width: 680px;
+	}
+.grid-items li {
+	margin: 0px 15px 5px 15px;
+	}
+	.grid-items li img{
+	width: 310px;
+	height: 249px;
+	}
+}
+@media only screen and (min-width: 490px) and (max-width: 759px) {
+	.grid-items {
+	width:490px;
+	}
+.grid-items li {
+	margin: 0px 20px 5px 20px;
+	}
+	.grid-items li img{
+	width: 450px;
+	height: 361px;
+	}
+}
+@media only screen and (max-width: 489px) {
+	.grid-items {
+		width:355px;
+		margin-top: 50px;
+	}
+	.grid-items li {
+	margin: 0px 15px 5px 20px;
+	}
+	.grid-items li img{
+	width:325px;
+	height:261px;
+	}
+	
+	.grid-items li h4{
+	padding-top:7px;
+		margin-bottom: 7px;
+	}
+}
+
+/* ===========================================================	
+
+	works-title
+	
+=========================================================== */
+.works-tit {
+	font-size: 0.95rem;
+	letter-spacing: 0.05em;
+	text-align: left;
+	margin: 1.5rem 6.2rem 2rem;
+}
+@media only screen and (min-width: 1100px) {
+	.works-tit {
+		margin-left: 80px;
+	}
+}
+@media only screen and (min-width: 750px) and (max-width: 939px) {
+	.works-tit {
+		margin: 20px;
+	}
+}
+@media only screen and (min-width: 480px) and (max-width: 749px) {
+	.works-tit {
+		margin: 20px 20px 30px 15px;
+	}
+}
+@media only screen and (max-width: 479px) {
+	.works-tit {
+		font-size: 0.85rem;
+		margin: 40px 10px 35px 15px;
+	}
+}
+/*　worksへもどる　*/
+.works-tit a {
+	font-size: 0.7rem;
+	font-style: italic;
+	color: #222;
+	text-decoration: none;
+	padding-bottom: 3px;
+	border-bottom: 1px solid;
+}
+.works-tit a:hover {
+	opacity: 0.25;
+	filter: alpha(opacity=25); /* Ie用 */
+}
+/* ===========================================================	
+
+	slider
+	
+=========================================================== */
+/*　最初の画面フェードイン　*/
+#slider {
+	opacity: 0;
+	transition: opacity 1.5s linear; /* ふんわり表示用 */
+}
+#slider.slick-initialized {
+	opacity: 1;
+}
+#slider {
+	width: 750px;
+	position: relative;
+	text-align: center;
+	margin: 0px auto;
+}
+@media only screen and (min-width: 940px) {
+	#slider {
+		width: 750px;
+	}
+}
+@media only screen and (min-width: 750px) and (max-width: 939px) {
+	#slider {
+		width: 680px;
+	}
+}
+@media only screen and (min-width: 480px) and (max-width: 739px) {
+	#slider {
+		width: 100%;
+		padding: auto 0;
+	}
+}
+@media only screen and (max-width: 479px) {
+	#slider {
+		width: auto;
+	}
+}
+@media only screen and (max-width: 840px) {
+	#works .contents {
+		margin: 0;
+	}
+}
+/*---------- 矢印 ----------*/
+.slick-prev.arrow:before, .slick-next.arrow:before {
+	content: "";
+}
+.slick-prev.arrow, .slick-next.arrow {
+	border-left: 1px solid #222;
+	border-bottom: 1px solid #222;
+	transform: rotate(45deg);
+	width: 1rem;
+	height: 1rem;
+}
+.slick-next.arrow {
+	transform: rotate(-135deg);
+}
+.slick-prev, .slick-next {
+	top: 96%;
+}
+.slick-next {
+	right: 2rem;
+}
+.slick-prev {
+	left: 2rem;
+}
+@media only screen and (max-width: 1030px) {
+	.slick-prev, .slick-next {
+		top: 96%;
+	}
+}
+@media only screen and (max-width: 600px) {
+	.slick-prev, .slick-next {
+		font-size: 0.8rem;
+		top: 94%;
+	}
+}
+/*---------- ページ数 ----------*/
+.slick-counter {
+	margin: 1.8rem auto 0rem;
+	padding: 0;
+	font-size: 0.85rem;
+	width: 4rem;
+	color: #222;
+}
+@media only screen and (max-width: 600px) {
+	.slick-counter {
+		margin: 1.9rem auto 0rem;
+		font-size: 0.82rem;
+	}
+}
+@media only screen and (max-width: 400px) {
+	.slick-counter {
+		margin: 1.2rem auto 0;
+	}
+}
