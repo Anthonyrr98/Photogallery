@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的照片合辑</title>
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="shortcut icon" href="../index.png" type="image/vnd.microsoft.icon" />
+<link rel="icon" href="../index.png" type="image/vnd.microsoft.icon" />
+<link rel="stylesheet" href="../css/reset.css" type="text/css">
+<link rel="stylesheet" href="../css/slick.css" type="text/css">
+<link rel="stylesheet" href="../css/slick-theme.css" type="text/css">
+<link rel="stylesheet" href="../css/style.css" type="text/css">
+</head>
+
+<body class="drawer drawer--top">
+	<header role="banner">
+		
+		<nav class="drawer-nav" role="navigation">
+			<ul class="drawer-menu">
+			</ul>
+		</nav>
+	</header>
+
+<h2 class="works-tit"><a href="index.html">WORKS</a>&nbsp;/&thinsp;城市</h2>
+<div id="works" class="container">
+	<div class="contents">
+		<div class="slider-container">
+			<div id="slider">
+				<div><img data-lazy="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E5%9F%8E%E5%B8%82/20201227.jpeg" alt=""></div>
+				<div><img data-lazy="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E5%9F%8E%E5%B8%82/20210525.jpeg" alt=""></div>
+				<div><img data-lazy="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E5%9F%8E%E5%B8%82/20211015.jpeg" alt=""></div>
+				<div><img data-lazy="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E5%9F%8E%E5%B8%82/20221230.jpeg" alt=""></div>
+				<div><img data-lazy="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E5%9F%8E%E5%B8%82/20221231.jpeg" alt=""></div>
+				<div><img data-lazy="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E5%9F%8E%E5%B8%82/20230312.jpeg" alt=""></div>
+				<div><img data-lazy="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E5%9F%8E%E5%B8%82/20230406.jpeg" alt=""></div>
+				<div><img data-lazy="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E5%9F%8E%E5%B8%82/20230407.jpeg" alt=""></div>
+				<div><img data-lazy="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E5%9F%8E%E5%B8%82/20230503.jpeg" alt=""></div>
+				<div><img data-lazy="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E5%9F%8E%E5%B8%82/20230520.jpeg" alt=""></div>
+				<div><img data-lazy="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E5%9F%8E%E5%B8%82/20230709.jpeg" alt=""></div>
+				<div><img data-lazy="http://websiteanthony.oss-cn-beijing.aliyuncs.com/rlzhao/cangpin/new/%E5%9F%8E%E5%B8%82/20230725.jpg" alt=""></div>
+			</div>
+		</div>
+	</div>
+	<!--contents--> 
+	
+</div>
+<!--container-->
+
+<footer>
+	<div class="copyright">
+		<p>Copyright <span>&copy;</span>Anthonyrr</p>
+	</div>
+</footer>
+
+<!-- jquery & iScroll --> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.1.3/iscroll.min.js"></script> 
+<!-- drawer.js --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.1.0/js/drawer.min.js"></script> 
+<!-- --> 
+
+<!-- drawerスクリプト --> 
+<script type="text/javascript">
+ $(document).ready(function () {
+    $('.drawer').drawer();
+});
+</script> 
+<script type="text/javascript" src="../js/slick.js"></script> 
+<script>
+	$(window).on('load', function(){
+  $('#slider').on('init', function(event, slick) {
+    $(this).append('<div class="slick-counter"><span class="current"></span> / <span class="total"></span></div>');
+    $('.current').text(slick.currentSlide + 1);
+    $('.total').text(slick.slideCount);
+  })
+  .slick({
+		autoplay: true,
+		autoplaySpeed: 4100,
+		lazyLoad: 'ondemand',
+		pauseOnFocus: false,
+		pauseOnHover: false,
+		pauseOnDotsHover: false,
+		prevArrow: '<button type="button" class="slick-prev arrow">Previous</button>',
+		nextArrow: '<button type="button" class="slick-next arrow">Next</button>',
+  })
+  .on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+    $('.current').text(nextSlide + 1);
+  });
+});
+</script>
+</body>
+</html>
